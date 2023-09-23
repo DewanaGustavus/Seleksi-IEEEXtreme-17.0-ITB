@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=10mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+
+\rfoot{\thepage}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\textbf{Seleksi IEEEXtreme 17.0 ITB}}
+\pagenumbering{gobble}
+
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+
+    
+    \section*{Peko Peko} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Usada Pekora adalah seekor raja kelinci populer di negeri Pekoland. Ia memiliki kalimat favorit yang sudah terkenal yaitu "pekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopeko \\ 
+pekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopekopeko". \\
+Karena tertarik dengan negeri Pekoland, anda memutuskan untuk berlibur ke negeri Pekoland selama N hari. \\
+
+Terdapat sebuah peraturan dimana setiap pengunjung yang ingin memasuki negeri Pekoland akan ditanya kalimat favorit yang ia miliki oleh seorang penjaga. Karena tidak tahu mengenai peraturan tersebut anda terkejut dan menjawab dengan sebuah kalimat S. Setelah dipersilahkan memasuki negeri Pekoland, penjaga memberitahu anda bahwa pada setiap hari raja Pekora akan memberi perintah kepada seluruh penduduk dan pengunjung negeri Pekoland untuk mengubah sebuah rentang dalam kalimat favoritnya menjadi kalimat favorit raja Pekora.\\
+
+Penjelasan mengenai rentang pada kalimat yang diminta oleh raja Pekora adalah raja Pekora akan memberikan 2 buah bilangan bulat i dan K dimana untuk sebuah rentang yang dimulai pada posisi i, rentang tersebut harus diubah menjadi kalimat "peko" yang diulang sebanyak K kali. Sebagai contoh misal kalimat favorit anda adalah "konpekokonpekokonpeko" dan perintah yang diberikan adalah i = 6 dan K = 4. Artinya adalah anda diperintahkan untuk mengubah "kokonpekokonpeko" menjadi "pekopekopekopeko" dapat dilihat bahwa anda perlu mengubah 10 huruf untuk memenuhi perintah tersebut. Setelah diberikan perintah untuk mengubah, raja Pekora memperbolehkan penduduk negeri Pekoland untuk mengembalikan kondisi kalimat favoritnya menjadi seperti semula.\\
+
+Sebagai pengunjung baru di negeri Pekoland anda penasaran ketika diperintahkan untuk mengubah rentang kalimat menjadi kalimat favorit raja Pekora, berapa banyak perubahan yang diperlukan untuk memenuhi perintah raja Pekora. Selain itu karena tidak ingin terlalu banyak perubahan pada kalimat favorit anda, setiap hari sebelum raja Pekora memberi perintah, anda akan mengubah huruf pada posisi j menjadi sebuah huruf c. Hitunglah jumlah perubahan minimum yang harus anda lakukan untuk memenuhi perintah raja Pekora setiap harinya.
+
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari sebuah kalimat $S$ dengan panjang ($ 4 \leq |S| \leq 100.000$) yang merupakan kalimat favorit anda.\\
+Kalimat favorit anda hanya berisi huruf latin kecil.\\
+Baris kedua terdiri dari sebuah bilangan bulat positif $N$ ($1 \leq N \leq 100.000$) yang menyatakan berapa hari anda menginap di negeri Pekoland.\\
+Selanjutnya akan terdiri dari N baris yang menyatakan kegiatan dalam N hari selanjutnya.\\
+Untuk setiap baris terdiri dari sebuah bilangan bulat positif $j$ ($1 \leq j \leq |S|$) dan sebuah huruf latin kecil $c$ yang merupakan perubahan yang ingin anda lakukan pada kalimat favorit anda.\\
+Lalu selanjutnya terdiri dari 2 buah bilangan bulat positif $i$ ($1 \leq i \leq |S| - 3$) dan $K$ ($1 \leq K \leq \lfloor \frac{|S|-i+1}{4}\rfloor$) yang merupakan perintah raja Pekora pada hari tersebut.
+
+\subsection*{Format Keluaran}
+
+Untuk setiap hari, keluarkan berapa perubahan yang perlukan untuk memenuhi perintah raja Pekora.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+konpekokonpekokonpeko
+4
+14 p 11 1
+15 e 14 2
+16 k 14 2
+17 o 14 2
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+1
+2
+1
+0
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh pertama kalimat favorit anda adalah "konpekokonpekokonpeko"\\
+pada hari pertama anda mengubah kalimat menjadi "konpekokonpekpkonpeko"\\
+lalu raja Pekora memberi perintah untuk mengubah rentang kalimat "pekp" menjadi "peko", perubahan yang perlu dilakukan adalah 1\\
+pada hari kedua anda mengubah kalimat menjadi "konpekokonpekpeonpeko"\\
+lalu raja Pekora memberi perintah untuk mengubah rentang kalimat "peonpeko" menjadi "pekopeko", perubahan yang perlu dilakukan adalah 2.
+
+\pagebreak
+
+\end{document}
