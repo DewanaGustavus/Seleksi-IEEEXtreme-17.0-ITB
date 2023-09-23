@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=10mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+
+\rfoot{\thepage}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\textbf{Seleksi IEEEXtreme 17.0 ITB}}
+\pagenumbering{gobble}
+
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+
+    
+    \section*{Constant Moderato} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Sunaookami Shiroko adalah seorang siswi di SMA Abydos. Shiroko memiliki hobi yang sangat unik yaitu merampok bank. Diketahui pada kota Kivotos terdapat N buah bank yang beroperasi. Setiap bank pada kota Kivotos memiliki sebuah teknologi unik yaitu \emph{Constant Moderato}. Teknologi \emph{Constant Moderato} pada sebuah bank memungkinkan seseorang untuk melipatgandakan uang yang dimiliki dengan sebuah pengali yang konstan yaitu K. \\
+
+Shiroko berniat untuk melakukan perampokan bank dan mencoba teknologi tersebut. Namun karena tidak ingin ditangkap oleh polisi, ia hanya dapat merampok sebuah bank sehingga ia ingin melakukan perencanaan terlebih dahulu sebelum melaksanakan aksinya. Shiroko meminta seorang temannya yaitu Ayane untuk menganalisa seluruh bank yang ada di Kivotos. Namun karena keterbatasan teknologi Ayane hanya bisa menganalisa M buah bank secara acak. Untuk setiap bank yang dianalisa Ayane, Ia akan mendapat informasi nilai K yang merupakan pengali konstan untuk teknologi \emph{Constant Moderato} bank tersebut dan nilai J yaitu jarak dari sekolah Abydos ke bank tersebut.\\
+
+Dengan menggunakan informasi yang diberikan oleh Ayane, Shiroko dapat memutuskan bank mana yang akan menghasilkan keuntungan terbesar apabila Ia memiliki uang sebanyak X. Perlu diperhatikan juga perjalanan dari sekolah Abydos ke sebuah bank akan mengeluarkan uang sebesar jarak yang ditempuh dan Shiroko mungkin saja tidak jadi melakukan perampokan bank apabila tidak terdapat rencana yang dapat menguntungkan baginya. Bantu Shiroko untuk menentukan nilai harapan uang yang Ia miliki setelah melakukan perampokan bank.\\
+
+Untuk format keluaran semisal nilai harapan Shiroko direpresentasikan dengan pecahan sederhana $\frac{P}{Q}$ dengan Q relatif prima dengan 998244353. Keluarkan sebuah nilai bilangan bulat $P \times Q^{-1}$ modulo 998244353. Dimana $Q^{-1}$ modulo 998244353 adalah nilai yang memenuhi persamaan $Q^{-1} \times Q$ $\equiv 1$ (mod 998244353). 
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari tiga bilangan bulat positif $N, M, X$ ($1 \leq M \leq N \leq 100.000, 1 \leq X \leq 10^{9}$), sesuai dengan penjelasan soal.\\
+N baris selanjutnya terdiri dari dua bilangan bulat positif $K, J$ ($1 \leq K, J \leq 10^{9}$), yang merupakan nilai pengali dan jarak sebuah bank.
+
+\subsection*{Format Keluaran}
+
+Keluarkan sebuah bilangan bulat positif yang merupakan nilai harapan dari uang yang dimiliki Shiroko setelah melakukan perampokan.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+3 1 10
+2 7
+5 5
+16 8
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+18
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3 2 10
+2 7
+5 5
+16 8
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+665496258
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 3}
+\begin{lstlisting}
+3 3 10
+2 7
+5 5
+16 8
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 3}
+\begin{lstlisting}
+24
+\end{lstlisting}
+\end{multicols}
+
+\subsection*{Penjelasan}
+Untuk memudahkan penjelasan bank yang digunakan sebagai contoh adalah sama.
+
+
+\end{document}
