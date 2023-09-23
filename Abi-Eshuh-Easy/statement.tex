@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=10mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+
+\rfoot{\thepage}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\textbf{Seleksi IEEEXtreme 17.0 ITB}}
+\pagenumbering{gobble}
+
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+
+    
+    \section*{Abi-Eshuh (Easy)} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Asuma Toki adalah seorang siswi dari SMA Millennium yang tergabung dalam klub C\&C. Sebagai anggota dari C\&C yang rajin, Toki berusaha sangat keras untuk menjadi perfect maid dan akan menerima seluruh misi yang diberikan kepadanya. Ketua OSIS di SMA Millennium yaitu Rio sedang membutuhkan bantuan dari C\&C. Terdapat sebuah AI misterius bernama Divi:SION yang dapat menciptakan banyak robot dan berencana untuk menghancurkan kota Kivotos. Rio mempunyai Q buah permintaan yang berbeda dimana untuk sebuah permintaan yang dibutuhkan Rio, Rio meminta bantuan anggota C\&C untuk membasmi X buah robot jahat buatan Divi:SION dengan waktu yang sesingkat-singkatnya.\\
+
+Beruntung, Toki memiliki sebuah sistem alat tempur mutakhir yang bernama Abi-Eshuh. Abi-Eshuh bekerja dengan sistem sebagai berikut, pada armor Abi-Eshuh akan terdapat sebuah level kekuatan laser yaitu K yang akan nilainya bermulai dari 1 untuk setiap permintaan yang akan dikerjakan. Untuk setiap detik, Toki akan menekan salah satu dari kedua tombol berikut:
+\begin{enumerate}
+    \item Tombol A : Abi-Eshuh akan menembak K buah laser yang akan membasmi K buah robot 
+    \item Tombol B : Abi-Eshuh akan menembak K buah laser seperti tombol A, dan kekuatan laser Abi-Eshuh akan bertambah sebesar 1
+\end{enumerate}
+Perlu diperhatikan bahwa Toki harus berhati-hati dalam menembakkan laser, karena apabila sudah tidak ada robot dan Toki menembakkan laser, maka laser tersebut tidak akan mengenai musuh dan akhirnya akan mengenai dan menghancurkan kota. Bantulah Toki untuk menentukan waktu minimum untuk menyelesaikan permintaan yang diberikan oleh Rio. Perlu diperhatikan setiap Toki menyelesaikan permintaan Rio, kekuatan laser Abi-Eshuh akan di-reset kembali menjadi 1.
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari satu bilangan bulat positif $Q$ ($1 \leq Q \leq 100.000$), yang menyatakan banyaknya bantuan yang dibutuhkan Rio.\\
+Q baris selanjutnya terdiri dari satu bilangan bulat positif $X$ ($1 \leq X \leq 10^{18}$), yang merupakan bantuan yang dibutuhkan Rio yaitu banyaknya robot yang perlu dibasmi oleh Toki.
+
+\subsection*{Format Keluaran}
+
+Untuk setiap bantuan yang dibutuhkan Rio, keluarkan sebuah bilangan bulat yang merupakan waktu minimum bagi Toki untuk membasmi robot-robot yang diminta Rio.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan}
+\begin{lstlisting}
+3
+2
+30
+100
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran}
+\begin{lstlisting}
+2
+8
+14
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada permintaan pertama Toki urutan penekanan tombol yang dapat membasmi 2 buah robot adalah AA dan AB.\\
+Perhatikan apabila Toki memilih tombol B sebagai langkah pertama, maka akan tersisa 1 buah robot sedangkan kekuatan Abi-Eshuh adalah 2, yang membuat membasmi sisa robot menjadi mustahil karena tombol apapun yang Toki tekan laser yang ditembakkan akan lebih banyak dari pada jumlah robot yang tersisa.
+
+\pagebreak
+Pada permintaan kedua misalkan urutan penekanan tombol oleh Toki adalah AABBABBAAA, maka urutan kondisi yang terjadi adalah sebagai berikut : \\
+
+\begin{tabular}{ | c | c | c | c | }
+    \hline
+    Detik & Tombol & Kekuatan & Robot \\ 
+    \hline
+    0 &  & 1 & 30\\  
+    \hline
+    1 & A & 1 & 29\\  
+    \hline
+    2 & A & 1 & 28\\  
+    \hline
+    3 & B & 2 & 27\\  
+    \hline
+    4 & B & 3 & 25\\  
+    \hline
+    5 & A & 3 & 22\\  
+    \hline
+    6 & B & 4 & 19\\  
+    \hline
+    7 & B & 5 & 15\\  
+    \hline
+    8 & A & 5 & 10\\  
+    \hline
+    9 & A & 5 & 5\\  
+    \hline
+    10 & A & 5 & 0\\  
+    \hline
+\end{tabular}
+\\
+\\
+Perlu diperhatikan bahwa urutan ini bukan solusi yang optimal.
+
+\pagebreak
+
+\end{document}
