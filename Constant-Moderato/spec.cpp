@@ -7,15 +7,15 @@ using namespace std;
 
 class ProblemSpec : public BaseProblemSpec {
 protected:
-    const int QMAX = 1e5;
-    const ll XMAX = 1e18;
-    int Q;
-    vector<ll> X, K;
+    const int NMAX = 1e5;
+    const ll XMAX = 1e9;
+    int N, M, X;
+    vector<ll> K, J;
     vector<ll> ans;
     
     void InputFormat() {
-        LINE(Q);
-        LINES(X, K) % SIZE(Q);
+        LINE(N, M, J);
+        LINES(K, J) % SIZE(N);
     }
 
     void OutputFormat1() {
@@ -28,9 +28,11 @@ protected:
     }
 
     void Constraints() {
-        CONS(1 <= Q <= QMAX);
-        CONS(X.size() == Q && K.size() == Q);
-        CONS(eachElementBetween(X, 1, XMAX));
+        CONS(1 <= N <= NMAX);
+        CONS(1 <= M <= N);
+        CONS(1 <= X <= XMAX);
+        CONS(K.size() == N && J.size() == N);
+        CONS(eachElementBetween(J, 1, XMAX));
         CONS(eachElementBetween(K, 1, XMAX));
     }
 private:
@@ -44,35 +46,59 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
-    void SampleTestCase() {
+    void SampleTestCase1() {
         Input({
-            "2",
-            "10 6",
-            "100 5"
+            "3 1 10",
+            "2 7",
+            "5 5",
+            "16 8"
         });
         Output({
-            "-1",
-            "11"
+            "18"
+        });
+    }
+
+    void SampleTestCase2() {
+        Input({
+            "3 2 10",
+            "2 7",
+            "5 5",
+            "16 8"
+        });
+        Output({
+            "665496258"
+        });
+    }
+
+    void SampleTestCase3() {
+        Input({
+            "3 3 10",
+            "2 7",
+            "5 5",
+            "16 8"
+        });
+        Output({
+            "24"
         });
     }
 
     void BeforeTestCase(){
-        X.clear();
+        J.clear();
         K.clear();
     }
     
     void TestCases() {
-        for(int i=0;i<10;i++)CASE(Q = 10, random_query(Q, X, K, 1, 100));
-        for(int i=0;i<10;i++)CASE(Q = QMAX, random_query(Q, X, K, 1, QMAX));
-        for(int i=0;i<10;i++)CASE(Q = QMAX, random_query(Q, X, K, 1, 1e9));
-        for(int i=0;i<10;i++)CASE(Q = QMAX, random_query(Q, X, K, 1, 1e12));
-        for(int i=0;i<10;i++)CASE(Q = QMAX, random_query(Q, X, K, 1, XMAX));
+        for(int i=0;i<10;i++)CASE(N = 10, M = rnd.nextInt(1, N), X = rnd.nextInt(1,100), random_query(N, K, J, 1, 10));
+        for(int i=0;i<10;i++)CASE(N = 100, M = rnd.nextInt(1, N), X = rnd.nextInt(100,1e3), random_query(N, K, J, 1, 100));
+        for(int i=0;i<10;i++)CASE(N = 1e3, M = rnd.nextInt(1, N), X = rnd.nextInt(1e3,1e5), random_query(N, K, J, 1, 1e5));
+        for(int i=0;i<10;i++)CASE(N = 1e4, M = rnd.nextInt(1, N), X = rnd.nextInt(1e5,XMAX), random_query(N, K, J, 1, XMAX));
+        for(int i=0;i<10;i++)CASE(N = NMAX, M = rnd.nextInt(1, N), X = rnd.nextInt(1,XMAX), random_query(N, K, J, 1, XMAX));
     }
 private:
-    void random_query(int Q, vector<ll> X, vector<ll> K, int low, ll high) {
+    void random_query(int Q, vector<ll>& K, vector<ll>& J, int low, ll high) {
         for(int i=0;i<Q;i++) {
-            X.push_back(rnd.nextLongLong(low, high));
             K.push_back(rnd.nextLongLong(low, high));
+            J.push_back(rnd.nextLongLong(low, high));
         }
     }
 };
