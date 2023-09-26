@@ -78,15 +78,13 @@ Keluarkan sebuah bilangan bulat positif yang merupakan nilai harapan dari kualit
 \begin{multicols}{2}
 \subsection*{Contoh Masukan 1}
 \begin{lstlisting}
-3 1 10
-2 7
-5 5
-16 8
+5 1
+1 2 3 4 5
 \end{lstlisting}
 \columnbreak
 \subsection*{Contoh Keluaran 1}
 \begin{lstlisting}
-18
+225
 \end{lstlisting}
 \vfill
 \null
@@ -95,37 +93,31 @@ Keluarkan sebuah bilangan bulat positif yang merupakan nilai harapan dari kualit
 \begin{multicols}{2}
 \subsection*{Contoh Masukan 2}
 \begin{lstlisting}
-3 2 10
-2 7
-5 5
-16 8
+3 4
+1 2 3
 \end{lstlisting}
 \columnbreak
 \subsection*{Contoh Keluaran 2}
 \begin{lstlisting}
-665496258
+499122196
 \end{lstlisting}
 \vfill
 \null
 \end{multicols}
 
-\begin{multicols}{2}
-\subsection*{Contoh Masukan 3}
-\begin{lstlisting}
-3 3 10
-2 7
-5 5
-16 8
-\end{lstlisting}
-\columnbreak
-\subsection*{Contoh Keluaran 3}
-\begin{lstlisting}
-24
-\end{lstlisting}
-\end{multicols}
-
 \subsection*{Penjelasan}
-Untuk memudahkan penjelasan bank yang digunakan sebagai contoh adalah sama.
+Pada contoh pertama, hanya terdapat 1 kopi jadi seluruh pelanggan akan menilai kopi yang sama sehingga total nilai untuk kopi 1 adalah total penilaian pelanggan yaitu 15. Untuk nilai kualitas kafe Chino adalah kuadrat dari nilai kopi sehingga nilai kualitas kafe Chino adalah $15^2$ = 225\\
 
+Pada contoh kedua, terdapat 3 pelanggan dan 4 jenis kopi, semisal kopi yang diberikan kepada pelanggan adalah\\
+Pelanggan 1 : kopi 1\\
+Pelanggan 2 : kopi 1\\
+Pelanggan 3 : kopi 3\\
+penilaian untuk setiap kopi adalah\\
+Kopi 1 : 3\\
+Kopi 2 : 0\\
+Kopi 3 : 3\\
+Kopi 4 : 0\\
+nilai kualitas kafe Chino untuk kasus ini adalah $3^2 + 0^2 + 3^2 + 0^2$ = 18\\
+nilai harapan kualitas kafe adalah $\frac{P}{Q}$ dimana P adalah jumlah dari nilai kualitas kafe untuk seluruh kemungkinan dan Q adalah jumlah kemungkinan yang mungkin, apabila dihitung didapat bahwa nilai harapan kualitas kafe adalah $\frac{1248}{64}$, lalu dapat dihitung bahwa $P \times Q^{-1} \equiv 499122196$ (mod 998244353).
 
 \end{document}
