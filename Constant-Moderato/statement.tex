@@ -58,7 +58,7 @@
 
 \subsection*{Deskripsi}
 
-Sunaookami Shiroko adalah seorang siswi di SMA Abydos. Shiroko memiliki hobi yang sangat unik yaitu merampok bank. Diketahui pada kota Kivotos terdapat N buah bank yang beroperasi. Setiap bank pada kota Kivotos memiliki sebuah teknologi unik yaitu \emph{Constant Moderato}. Teknologi \emph{Constant Moderato} pada sebuah bank memungkinkan seseorang untuk melipatgandakan uang yang dimiliki dengan sebuah pengali yang konstan yaitu K. \\
+Sunaookami Shiroko adalah seorang siswi di SMA Abydos. Shiroko memiliki hobi yang sangat unik yaitu merampok bank. Diketahui pada kota Kivotos terdapat N buah bank yang beroperasi. Setiap bank pada kota Kivotos memiliki sebuah teknologi unik yaitu \emph{Constant Moderato}. Teknologi \emph{Constant Moderato} pada sebuah bank memungkinkan seseorang untuk melipatgandakan uang yang dimiliki dengan sebuah pengali yang konstan yaitu K.\\
 
 Shiroko berniat untuk melakukan perampokan bank dan mencoba teknologi tersebut. Namun karena tidak ingin ditangkap oleh polisi, ia hanya dapat merampok sebuah bank sehingga ia ingin melakukan perencanaan terlebih dahulu sebelum melaksanakan aksinya. Shiroko meminta seorang temannya yaitu Ayane untuk menganalisa seluruh bank yang ada di Kivotos. Namun karena keterbatasan teknologi Ayane hanya bisa menganalisa M buah bank secara acak. Untuk setiap bank yang dianalisa Ayane, Ia akan mendapat informasi nilai K yang merupakan pengali konstan untuk teknologi \emph{Constant Moderato} bank tersebut dan nilai J yaitu jarak dari sekolah Abydos ke bank tersebut.\\
 
@@ -125,7 +125,14 @@ Keluarkan sebuah bilangan bulat positif yang merupakan nilai harapan dari uang y
 \end{multicols}
 
 \subsection*{Penjelasan}
-Untuk memudahkan penjelasan bank yang digunakan sebagai contoh adalah sama.
+Untuk memudahkan penjelasan bank yang digunakan sebagai contoh adalah sama.\\
 
+Pada Contoh pertama Shiroko hanya mendapat informasi dari sebuah bank sehingga Ia hanya perlu memutuskan apakah ingin merampok atau tidak. Terdapat 3 kemungkinan bank yang diberikan informasinya yaitu bank 1, 2, dan 3. Perhatikan bahwa setelah merampok bank uang yang dimiliki Shiroko adalah sebagai berikut\\
+Bank 1 : -1\\
+Bank 2 : 20\\
+Bank 3 : 24\\
+Khusus untuk bank 1 Shiroko memilih tidak merampok karena akan menghasilkan uang yang lebih sedikit, dari ketiga kemungkinan yang ada nilai harapan dihitung sebagai berikut $\frac{10 + 20 + 24}{3} = 18$\\
+
+Pada Contoh kedua didapat nilai harapan adalah $\frac{68}{3}$ bisa didapat salah satu nilai $3^{-1} \times 3 \equiv 1$ (mod 998244353) adalah $3^{-1} \equiv Q^{-1} \equiv 332748118$ (mod 998244353) sehingga nilai harapan adalah $P \times Q^{-1}$ modulo 998244353 = $68 \times 332748118$ modulo 998244353 = 665496258
 
 \end{document}
