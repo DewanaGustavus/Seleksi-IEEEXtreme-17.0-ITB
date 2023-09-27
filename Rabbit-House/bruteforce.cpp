@@ -36,14 +36,15 @@ int main() {
     range(i,0,n) cin >> a[i];
     vvi combin;
     generatecombination(n,k,combin);
-    int ansval = 0;
+    ll ansval = 0;
     for(auto& v : combin) {
-        int val = 0;
-        int cntval[k] = {};
+        ll val = 0;
+        ll cntval[k] = {};
         range(i,0,k) {
             range(j,0,n) {
                 if(v[j] == i) {
                     cntval[i] += a[j];
+                    cntval[i] %= MOD;
                 }
             }
         }
@@ -55,8 +56,8 @@ int main() {
         ansval %= MOD;
     }
 
-    int combincnt = binpow(k,n,MOD);
-    int ans = ansval * invmod(combincnt, MOD);
+    ll combincnt = binpow(k,n,MOD);
+    ll ans = ansval * invmod(combincnt, MOD);
     ans %= MOD;
     cout << ans << endl;
 

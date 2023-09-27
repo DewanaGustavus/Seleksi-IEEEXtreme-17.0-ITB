@@ -5,8 +5,8 @@ using namespace std;
 
 class ProblemSpec : public BaseProblemSpec {
 protected:
-    const int NMAX = 10;
-    const int KMAX = 1e5;
+    const int NMAX = 14;
+    const int KMAX = 1e8;
     const int AMAX = 1e9;
     int N, K;
     vector<int> val;
@@ -44,15 +44,35 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Input({
+            "5 1",
+            "1 2 3 4 5"
+        });
+        Output({
+        	"225"
+        });
+    }
+
+    void SampleTestCase2() {
+        Input({
+            "3 4",
+            "1 2 3"
+        });
+        Output({
+        	"499122196"
+        });
+    }
+
     void BeforeTestCase(){
         val.clear();
     }
 
     void TestCases() {
         for(int i=0;i<10;i++)CASE(N = 2, K = rnd.nextInt(1,10), random_array(N, val, 10));
-        for(int i=0;i<10;i++)CASE(N = 5, K = rnd.nextInt(1,20), random_array(N, val, 1e3));
-        for(int i=0;i<10;i++)CASE(N = 7, K = rnd.nextInt(1,1000), random_array(N, val, 1e6));
-        for(int i=0;i<10;i++)CASE(N = NMAX, K = rnd.nextInt(1,KMAX), random_array(N, val, AMAX));
+        for(int i=0;i<10;i++)CASE(N = 5, K = rnd.nextInt(1,100), random_array(N, val, 1e3));
+        for(int i=0;i<10;i++)CASE(N = 7, K = rnd.nextInt(1,1e4), random_array(N, val, 1e6));
+        for(int i=0;i<10;i++)CASE(N = 10, K = rnd.nextInt(1,1e6), random_array(N, val, AMAX));
         for(int i=0;i<10;i++)CASE(N = NMAX, K = rnd.nextInt(1,KMAX), random_array(N, val, AMAX));
     }
 

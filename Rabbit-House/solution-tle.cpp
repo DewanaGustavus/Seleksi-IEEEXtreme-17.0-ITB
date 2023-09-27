@@ -44,22 +44,8 @@ int main() {
     pair<ll,ll> dp[mask][coffee] = {}; // dp[mask][cnt coffee]
     dp[0][0] = {0,1};
     range(m1,0,mask) { // mask lama dan udah rating kopi
-        vector<int> avail;
-        range(i,0,n) {
-            if(!(m1 & (1 << i))) {
-                avail.push_back(i);
-            }
-        }
-
-        int sz2 = avail.size();
-        int mask2 = 1 << sz2;
-        range2(tm2, mask2-1, 1) { // mask baru dan pengen nge rating 1 kopi yang sama
-            int m2 = 0;
-            range(i,0,sz2) {
-                if(tm2 & (1 << i)) {
-                    m2 |= (1 << avail[i]);
-                }
-            }
+        range2(m2,mask-1,1) { // mask baru dan pengen nge rating 1 kopi yang sama
+            if((m1 & m2) != 0)continue;
             
             ll m2val = 0;
             range(i,0,n) {
@@ -78,15 +64,9 @@ int main() {
         }
     }
 
-    ll combin = 1;
     range(cnt,0,coffee) {
-        ansval += dp[mask-1][cnt].first * combin;
+        ansval += dp[mask-1][cnt].first * combinatoric_modulo(k, cnt);
         ansval %= MOD;
-
-        combin *= k - cnt;
-        combin %= MOD;
-        combin *= invmod(cnt + 1, MOD);
-        combin %= MOD;
     }
 
     ll combincnt = binpow(k,n,MOD);
