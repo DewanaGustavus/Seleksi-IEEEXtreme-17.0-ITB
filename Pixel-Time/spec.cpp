@@ -70,6 +70,19 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Input({
+            "4",
+            "-2 9 6 5",
+            "0 5 10 3",
+            "2 -8 10 -4",
+            "-6 -6 0 -10"
+        });
+        Output({
+        	"2"
+        });
+    }
+
     void BeforeTestCase(){
         x1.clear();
         y1.clear();

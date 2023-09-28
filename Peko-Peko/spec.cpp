@@ -65,7 +65,7 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
-    void SampleTestCase() {
+    void SampleTestCase1() {
         Input({
             "konpekokonpekokonpeko",
             "4",
