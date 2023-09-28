@@ -99,6 +99,17 @@ private:
 
 class TestSpec : public BaseTestSpec<ProblemSpec> {
 protected:
+    void SampleTestCase1() {
+        Input({
+            "4 3 4 1 2",
+            "4 3 247",
+            "2 3 352",
+            "1 4 300"
+        });
+        Output({
+            "4"
+        });
+    }
     void BeforeTestCase() {
         U.clear();
         V.clear();
