@@ -1,0 +1,149 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=10mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+
+\rfoot{\thepage}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\textbf{Seleksi IEEEXtreme 17.0 ITB}}
+\pagenumbering{gobble}
+
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+
+    
+    \section*{Kutukan Abyss} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Seperti para penjelajah lainnya di Kota Orth, Riko merupakan seseorang yang gemar mengoleksi artefak di Abyss. 
+Artefak merupakan benda berharga yang berada di dalam Abyss yang gelap. Masing-masing artefak memiliki nilai keberhargaan.
+Layaknya hidup yang bukan seperti cerita fantasi, Riko harus menjelajah ke dalam Abyss untuk mendapatkan artefak-artefak yang dia inginkan.
+
+Abyss memiliki tiga buah tingkatan, yaitu tingkat pertama, kedua dan ketiga. Secara berurut, masing-masing tingkatan memiliki artefak sebanyak $n$, $m$, dan $k$ buah artefak. Namun, tiap tingkatan memberikan efek kutukan berbeda kepada penjelajah yang mengambil artefak yang dikandungnya. 
+Efek kutukan tersebut adalah sebagai berikut :
+\begin{enumerate}
+    \setlength\itemsep{0pt}
+    \item Tingkat pertama, merupakan tingkat yang aman dan tidak memberikan efek apa-apa.
+    \item Tingkat kedua, setelah penjelajah mengambil satu artefak di tingkat ini, total nilai artefak yang dia miliki akan dikurangi $y$.
+    \item Tingkat ketiga, setelah penjelajah mengambil satu artefak di tingkat ini, total nilai artefak yang dia miliki akan dibagi $z$.
+\end{enumerate}
+Abyss merupakan tempat yang berbahaya dan kutukan yang diberikannya tidak bisa dianggap enteng. Beruntung, Riko memiliki teman yang sudah
+ahli dengan kutukan Abyss yaitu Nanachi. Untuk membantu Riko dalam mencari artefak, Nanachi membuat sebuah penawar kutukan yang membuat 
+Riko dapat mengambil sebuah artefak tanpa terkena kutukan Abyss. Tetapi, karena persediaan penawar kutukan yang terbatas Nanachi hanya 
+mempersiapkan penawar kutukan sebanyak $x$ satuan.
+
+Dengan bantuan Nanaci, Riko pun memulai perjalanannya untuk mengoleksi artefak-artefak Abyss. 
+Seperti penjelajah lainnya, Riko ingin mendapatkan artefak-artefak dengan total nilai sebanyak-banyaknya. 
+Tentukan total nilai artefak maksimum yang bisa Riko dapat dengan melakukan urutan pengambilan artefak tertentu! 
+Perhatikan bahwa kutukan hanya berlaku setelah Riko mengambil sebuah artefak, sehingga Riko dapat secara bebas memulai perjalanannya di tingkatan berapapun serta ia juga dapat secara bebas memilih tingkatan yang akan ia kunjungi selanjutnya. Selain itu, Riko dapat memilih untuk memakai/tidak memakai penawar kutukan sesuka hatinya. 
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari 3 bilangan bulat $n$, $m$, $k$ ($1 \leq n,m,k \leq 10^5$)  dan diikuti 3 bilangan bulat $x$, $y$, $z$ ($0 \leq x,y,z \leq 10^9$) sesuai deskripsi soal.
+Baris kedua terdiri dari $n$ bilangan bulat $A_i$ ($1 \leq i \leq n$) yang menyatakan nilai artefak ke-$i$ di tingkat pertama.
+Baris ketiga terdiri dari $m$ bilangan bulat $B_j$ ($1 \leq j \leq m$) yang menyatakan nilai artefak ke-$j$ di tingkat kedua.
+Baris keempat terdiri dari $k$ bilangan bulat $C_l$ ($1 \leq l \leq k$) yang menyatakan nilai artefak ke-$l$ di tingkat ketiga. Untuk masing-masing nilai artefak, berlaku ($1 \leq A_i,B_j,C_l \leq 10^9$)
+
+\subsection*{Format Keluaran}
+
+Satu bilangan bulat positif yang menyatakan nilai maksimum artefak yang bisa Riko dapatkan.
+
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+3 4 3 0 2 3
+3 4 1
+3 1 2 2
+6 1 4
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+11
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+3 3 3 2 5 3
+3 4 1
+5 2 3
+7 1 3
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+21
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+\subsection*{Penjelasan}
+
+Untuk contoh masukan 1, salah satu cara pengambilan : {$C_3 \rightarrow B_3 \rightarrow C_1 \rightarrow A_2 \rightarrow B_1 \rightarrow A_1 \rightarrow A_3$}\\
+mengambil artefak ke-3 di tingkat ketiga : $\frac{0+4}{3} = 1$ \\
+mengambil artefak ke-3 di tingkat kedua : $(1+2) - 2 = 1$\\
+mengambil artefak ke-1 di tingkat ketiga : $\frac{1+6}{3} = 2$\\
+mengambil artefak ke-2 di tingkat pertama : $2 + 4 = 6$\\
+mengambil artefak ke-1 di tingkat kedua : $(6+3) - 2 = 7$\\
+mengambil artefak ke-1 di tingkat pertama : $7 + 3 = 10$\\
+mengambil artefak ke-3 di tingkat pertama : $10 + 1 = 11$\\
+
+Untuk contoh masukan 2, salah satu cara pengambilan : $C_3 \rightarrow B_1 (penawar) \rightarrow A_1 \rightarrow C_1 (penawar) \rightarrow A_3 \rightarrow A_2$\\
+mengambil artefak ke-3 di tingkat ketiga : $\frac{0+3}{3}$ = 1\\
+mengambil artefak ke-1 di tingkat kedua menggunakan penawar : $1 + 5 = 6$\\
+mengambil artefak ke-1 di tingkat pertama : $6 + 3 = 9$\\
+mengambil artefak ke-1 di tingkat ketiga menggunakan penawar : $9 + 7 = 16$\\
+mengambil artefak ke-3 di tingkat pertama : $16 + 1 = 17$\\
+mengambil artefak ke-2 di tingkat pertama : $17 + 4 = 21$\\
+
+\pagebreak
+
+\end{document}
