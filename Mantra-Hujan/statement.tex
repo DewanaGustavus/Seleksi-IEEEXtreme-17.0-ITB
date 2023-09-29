@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx, eso-pic}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\hypersetup{ colorlinks=true, linkcolor=black, filecolor=magenta, urlcolor=cyan}
+\geometry{ a4paper, total={170mm,257mm}, top=10mm, right=20mm, bottom=20mm, left=20mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em}
+\renewcommand{\headrulewidth}{0pt}
+
+\rfoot{\thepage}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\textbf{Seleksi IEEEXtreme 17.0 ITB}}
+\pagenumbering{gobble}
+
+\fancyfoot[CE,CO]{\thepage}
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=2,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=none,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    prebreak={},
+    keywordstyle=\color[rgb]{0.627,0.126,0.941},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{01,0,0},
+    captionpos=t,
+    escapeinside={(\%}{\%)}
+}
+
+\begin{document}
+
+\begin{center}
+
+    
+    \section*{Mantra Hujan} % ganti judul soal
+
+    \begin{tabular}{ | c c | }
+        \hline
+        Batas Waktu  & 1s \\    % jangan lupa ganti time limit
+        Batas Memori & 256MB \\  % jangan lupa ganti memory limit
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection*{Deskripsi}
+
+Kobo Kanaeru adalah seorang pawang hujan terkenal di kota HoloID. Suatu hari Kobo mendapat permintaan dari serikat petani untuk menghujani sawah mereka. Agar tumbuhan para petani bisa tumbuh dengan subur, diperlukan hujan dengan curah hujan sebesar X. Diketahui terdapat N buah awan dengan potensi curah hujan yang berbeda-beda. Namun pada saat ini cuaca di kota HoloID sedang cerah sehingga tidak terjadi hujan sama sekali. Beruntung Kobo memiliki sebuah sihir yang bisa membuat seluruh awan menjadi menurunkan hujan. Namun bisa saja curah hujan yang dimiliki awan yang tersedia tidak cukup untuk memenuhi permintaan para petani.\\ 
+
+Beruntung Kobo memiliki sihir lain yang bernama \emph{Mantra Hujan} dimana ia dapat memanipulasi sebuah awan dan mengubahnya menjadi awan Kobolonimbus. Awan Kobolonimbus memiliki curah hujan sebesar selisih dari curah hujan awan itu dengan curah hujan awan lain yang terakhir ia manipulasi lalu dikuadratkan. Perlu diperhatikan Kobo hanya dapat memanipulasi awan normal dan tidak bisa memanipulasi lagi awan yang sudah berubah menjadi awan Kobolonimbus. Bantulah Kobo untuk menentukan jumlah awan minimum yang perlu dimanipulasi agar bisa memenuhi permintaan para petani.
+
+\subsection*{Format Masukan}
+
+Baris pertama terdiri dari dua bilangan bulat positif $N, X (1 \leq N \leq 10^5, 1 \leq X \leq 10^9)$, yang merupakan banyaknya awan hujan dan curah hujan yang dibutuhkan.\\
+
+Baris kedua terdiri dari N buah bilangan bulat positif $H_i (1 \leq H_i \leq 10^9, 1 \leq i \leq N)$, yang merupakan penilaian pelanggan ke-i.
+
+\subsection*{Format Keluaran}
+
+Keluarkan sebuah bilangan bulat positif yang merupakan jumlah awan minimum yang perlu dimanipulasi Kobo, atau keluarkan -1 apabila permintaan tersebut mustahil untuk dipenuhi.
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 1}
+\begin{lstlisting}
+5 500
+10 20 10 20 10
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 1}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\begin{multicols}{2}
+\subsection*{Contoh Masukan 2}
+\begin{lstlisting}
+5 100
+1 2 3 4 5
+\end{lstlisting}
+\columnbreak
+\subsection*{Contoh Keluaran 2}
+\begin{lstlisting}
+-1
+\end{lstlisting}
+\vfill
+\null
+\end{multicols}
+
+\subsection*{Penjelasan}
+Pada contoh pertama, semisal kita akan memanipulasi awan kedua untuk berubah menjadi awan Kobolonimbus, awan yang terakhir dimanipulasi tidak ada sehingga diasumsikan nilai burah hujannya adalah 0, maka awan kedua akan memiliki curah hujan $20^2 = 400$. Lalu misal selanjutnya kita memabipulasi awan kelima, maka selisih curah hujannya dengan awan terakhir dimanipulasi adalah 10, sehingga curah hujannya akan berubah menjadi $10^2 = 100$. \\
+Kondisi awan pada kota HoloID sekarang adalah sebagai berikut, dengan nilai yang di bold menandakan awan Kobolonimbus.\\
+$[10, \textbf{400}, 10, 20, \textbf{100}]$\\
+Curah hujan total pada kota HoloID adalah 540. Dapat dibuktikan bahwa memanipulasi 2 awan merupakan jumlah awan minimum yang perlu dimanipulasi sehingga dapat memenuhi minimal curah hujan yang dibutuhkan.\\
+
+Pada contoh kedua, dapat dibuktikan bahwa untuk seluruh urutan cara memanipulasi awan, tidak mungkin didapatkan total curah hujan $\geq$ 100.
+
+\end{document}
