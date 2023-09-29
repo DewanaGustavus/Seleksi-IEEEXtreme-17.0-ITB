@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
             }else if(c == "1") {
                 mat[i][j] = 1;
             }else {
-                cout << "Wrong ouput format at line" << i << " col " << j;
+                cout << "Wrong output format at line " << i << " col " << j;
                 return wa();
             }
         }
@@ -56,12 +56,12 @@ int main(int argc, char *argv[]) {
     for(int i=0;i<m;i++) {
         tc_in >> x1 >> y1 >> x2 >> y2;
         int area = (x2 - x1 + 1) * (y2 - y1 + 1);
-        int sum1 = prefsum.sumrange(x1-1, y1-1, x2-1, y2-1);
+        int sum1 = prefsum.sumrange(x1-1, y1-1, x2, y2);
         int sum0 = area - sum1;
         int dif = abs(sum1 - sum0);
         if(dif > 1) {
             cout << "Violate constraint " << i << "\n";
-            cout << "val0 " << sum0 << " val1 " << sum1 << "dif" << dif;
+            cout << "val0 " << sum0 << " val1 " << sum1 << " dif " << dif;
             return wa();
         }
     }
