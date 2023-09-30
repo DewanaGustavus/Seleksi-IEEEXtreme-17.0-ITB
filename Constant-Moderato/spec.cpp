@@ -11,7 +11,7 @@ protected:
     const ll XMAX = 1e9;
     int N, M, X;
     vector<ll> K, J;
-    vector<ll> ans;
+    ll ans;
     
     void InputFormat() {
         LINE(N, M, X);
@@ -19,7 +19,7 @@ protected:
     }
 
     void OutputFormat1() {
-        LINES(ans);
+        LINE(ans);
     }
         
     void GradingConfig() {

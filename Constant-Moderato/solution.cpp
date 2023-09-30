@@ -15,7 +15,7 @@ const int maxn = 2e5+5;
 ll evaluate(ll k, ll j, ll x) {
     ll remain = x - j;
     ll get = k * remain;
-    return max(x, get - j) % MOD;
+    return max(x, get - j);
 }
 
 ll fac[maxn];
@@ -51,6 +51,7 @@ int main() {
     ll total = 0;
     ll cnt = combin(n, m);
     range(i,0,n-m + 1) {
+        bank[i] %= MOD;
         total += combin(n - i - 1, m - 1) * bank[i];
         total %= MOD;
     }
