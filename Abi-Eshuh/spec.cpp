@@ -8,7 +8,7 @@ using namespace std;
 class ProblemSpec : public BaseProblemSpec {
 protected:
     const int QMAX = 1e5;
-    const ll XMAX = 1e18;
+    const ll XMAX = 1e9;
     int Q;
     vector<ll> X, K;
     vector<ll> ans;
@@ -63,9 +63,9 @@ protected:
     
     void TestCases() {
         for(int i=0;i<10;i++)CASE(Q = 10, random_query(Q, X, K, 100));
-        for(int i=0;i<10;i++)CASE(Q = 100, random_query(Q, X, K, QMAX));
-        for(int i=0;i<10;i++)CASE(Q = 1000, random_query(Q, X, K, 1e9));
-        for(int i=0;i<10;i++)CASE(Q = 1e4, random_query(Q, X, K, 1e12));
+        for(int i=0;i<10;i++)CASE(Q = 100, random_query(Q, X, K, 1e4));
+        for(int i=0;i<10;i++)CASE(Q = 1000, random_query(Q, X, K, 1e6));
+        for(int i=0;i<10;i++)CASE(Q = 1e4, random_query(Q, X, K, 5e7));
         for(int i=0;i<10;i++)CASE(Q = QMAX, random_query(Q, X, K, XMAX));
     }
 private:

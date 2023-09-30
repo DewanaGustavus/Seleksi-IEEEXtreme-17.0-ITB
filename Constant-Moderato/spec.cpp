@@ -14,7 +14,7 @@ protected:
     vector<ll> ans;
     
     void InputFormat() {
-        LINE(N, M, J);
+        LINE(N, M, X);
         LINES(K, J) % SIZE(N);
     }
 

@@ -17,11 +17,11 @@ int main() {
 while(q--) {
     ll x, k;cin >> x >> k;
     
-    int low = 1;
-    int high = (k == 1) ? maxans : min(maxans, (2 * maxx) / (k-1));
-    int ans = -1;
+    ll low = 1;
+    ll high = (k == 1) ? maxans : min(maxans, (2 * maxx) / (k-1));
+    ll ans = -1;
     while(low <= high) {
-        int mid = (low + high) / 2;
+        ll mid = (low + high) / 2;
         ll T2 = sigma(mid-1) + k*mid;
         if(T2 >= x) {
             ans = mid;
@@ -31,7 +31,7 @@ while(q--) {
         }
     }
 
-    int T1 = ans * k;
+    ll T1 = ans * k;
     if(T1 > x)ans = -1;
     cout << ans << endl;
 }

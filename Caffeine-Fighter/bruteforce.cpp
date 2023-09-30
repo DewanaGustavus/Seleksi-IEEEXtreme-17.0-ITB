@@ -48,7 +48,7 @@ int main() {
     cin >> start >> end;
 
     int maxk = 0;
-    range(i,0,n) {
+    range(i,0,m) {
         int a,b,k;
         cin >> a >> b >> k;
         adj[a].emplace_back(b,k);

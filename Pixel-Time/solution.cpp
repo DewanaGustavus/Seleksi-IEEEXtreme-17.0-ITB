@@ -26,6 +26,9 @@ int main() {
         if(sudut1 > sudut2)swap(sudut1, sudut2);
 
         ld diffsudut = sudut2 - sudut1;
+        if(diffsudut == 0 || diffsudut == M_PI || diffsudut == 2*M_PI) {
+            cout << "Testcase Salah";
+        }
         if(diffsudut < M_PI) {
             segments1.push({sudut1, sudut2});
         }else {

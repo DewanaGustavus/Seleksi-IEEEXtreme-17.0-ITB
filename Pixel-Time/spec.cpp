@@ -3,15 +3,17 @@
 using namespace tcframe;
 using namespace std;
 
+#define ll long long
+
 class ProblemSpec : public BaseProblemSpec {
 protected:
     const int NMAX = 1e5;
     const int XMAX = 1e6;
     int N;
-    vector<int> x1;
-    vector<int> y1;
-    vector<int> x2;
-    vector<int> y2;
+    vector<ll> x1;
+    vector<ll> y1;
+    vector<ll> x2;
+    vector<ll> y2;
 
     int ans;
     void InputFormat() {
@@ -39,30 +41,24 @@ protected:
     }
 
 private:
-    bool array_cons(vector<int> &val){
+    bool array_cons(vector<ll> &val){
         if(val.size() != N)return false;
         for(int x : val){
             if(x > XMAX || x < -XMAX)return false;
         }
         return true;
     }
-    bool array_size(vector<int> &x1, vector<int> &y1, vector<int> &x2, vector<int> &y2, int N) {
+    bool array_size(vector<ll> &x1, vector<ll> &y1, vector<ll> &x2, vector<ll> &y2, ll N) {
         if(x1.size() != N)return false;
         if(y1.size() != N)return false;
         if(x2.size() != N)return false;
         if(y2.size() != N)return false;
         return true;
     }
-    bool no_same_grad(vector<int> &x1, vector<int> &y1, vector<int> &x2, vector<int> &y2) {
+    bool no_same_grad(vector<ll> &x1, vector<ll> &y1, vector<ll> &x2, vector<ll> &y2) {
         int N = x1.size();
         for(int i=0;i<N;i++) {
-            long double angle1 = atan2l(x1[i], y1[i]);
-            long double angle2 = atan2l(x2[i], y2[i]);
-            if(angle1 < 0)angle1 += 2*M_PI;
-            if(angle2 < 0)angle2 += 2*M_PI;
-            if(angle1 == angle2)return false;
-            if(angle1 > angle2)swap(angle1, angle2);
-            if(angle1 + M_PI == angle2)return false;
+            if(y1[i] * x2[i] == y2[i] * x1[i])return false;
         }
         return true;
     }
@@ -91,7 +87,7 @@ protected:
     }
 
     void TestCases() {
-        for(int i=0;i<10;i++)CASE(N = 10, random_segments(N, 10, x1, y1, x2, y2));
+        for(int i=0;i<10;i++)CASE(N = 5, random_segments(N, 10, x1, y1, x2, y2));
         for(int i=0;i<10;i++)CASE(N = 50, random_segments(N, 100, x1, y1, x2, y2));
         for(int i=0;i<10;i++)CASE(N = 200, random_segments(N, 1000, x1, y1, x2, y2));
         for(int i=0;i<10;i++)CASE(N = 1000, random_segments(N, 1e4, x1, y1, x2, y2));
@@ -101,27 +97,18 @@ protected:
     }
 
 private:
-    void random_segments(int N, int lim, vector<int> &vx1, vector<int> &vy1, vector<int> &vx2, vector<int> &vy2) {
+    void random_segments(int N, int lim, vector<ll> &vx1, vector<ll> &vy1, vector<ll> &vx2, vector<ll> &vy2) {
         for(int i=0;i<N;i++) {
-            int x1, y1;
+            ll x1, y1;
             do {
                 x1 = rnd.nextInt(-lim, lim);
                 y1 = rnd.nextInt(-lim, lim);
             }while(x1 == 0 && y1 == 0);
-            long double angle1 = atan2l(x1, y1);
-            if(angle1 < 0)angle1 += 2*M_PI;
-            int x2, y2;
-            while(true) {                
+            ll x2, y2;
+            do {
                 x2 = rnd.nextInt(-lim, lim);
                 y2 = rnd.nextInt(-lim, lim);
-                long double angle2 = atan2l(x2, y2);
-                if(angle2 < 0)angle2 += 2*M_PI;
-                if(angle1 == angle2)continue;
-                long double minang = min(angle1, angle2);
-                long double maxang = max(angle1, angle2);
-                if(minang + M_PI == maxang)continue;
-                break;
-            }
+            }while(y1 * x2 == y2 * x1);
             vx1.push_back(x1);
             vy1.push_back(y1);
             vx2.push_back(x2);

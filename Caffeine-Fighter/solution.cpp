@@ -47,7 +47,7 @@ int main() {
     cin >> n >> m >> X;
     cin >> start >> end;
 
-    range(i,0,n) {
+    range(i,0,m) {
         int a,b,k;
         cin >> a >> b >> k;
         adj[a].emplace_back(b,k);
